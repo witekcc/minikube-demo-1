@@ -70,10 +70,15 @@ docker login -e wciemiega@permissiondata.com -u wciemiega -p [pass] https://dock
 docker.permissiondata.com/services/bad-words:master
 
 # postgress
+# TODO is this needed?
+mkdir /tmp/postgres + chmod 777 /tmp/postgres
 kubectl create -f postgres-persistence.yml
 kubectl create -f postgres-claim.yml
 kubectl create -f postgres-pod.yml
 kubectl create -f postgres-service.yml
+
+#forward minikubevm to host
+kubectl port-forward postgres 15432:5432
 
 kubectl run bad-words10 --image=docker.permissiondata.com/services/bad-words:master \
 	--env="LOG_LEVEL=0" \
