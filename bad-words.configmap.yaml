@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bad-words-config
+  namespace: default
+data:
+  app.minleads: 2
+  repeated.maxnumber: 3
+  repeated.maxmark: 2
+  repeated.maxalpha: 3
+  db.driver: postgres
+  db.name: badwords
+  db.user: postgres
+  db.password: password
+  db.host: localhost
+  db.port: 5432
+  db.mode: disable
+  db.maxidleconns: 100
+  db.maxopenconns: 100
+  server.ip: 0.0.0.0
+  server.port: 7000
+  server.timeout: 10
+  log.level: 0
+  log.path: /var/log/badwords/badwords.log

@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: '{"kind":"Pod","apiVersion":"v1","metadata":{"name":"bad-words-4183345525-wkdi7","generateName":"bad-words-4183345525-","namespace":"default","selfLink":"/api/v1/namespaces/default/pods/bad-words-4183345525-wkdi7","uid":"b7ed96ac-485c-11e6-ab5d-7abdf6b0078d","resourceVersion":"1015","creationTimestamp":"2016-07-12T18:16:14Z","labels":{"pod-template-hash":"4183345525","run":"bad-words"},"annotations":{"kubernetes.io/created-by":"{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicaSet\",\"namespace\":\"default\",\"name\":\"bad-words-4183345525\",\"uid\":\"b7ecde55-485c-11e6-ab5d-7abdf6b0078d\",\"apiVersion\":\"extensions\",\"resourceVersion\":\"150\"}}\n"}},"spec":{"volumes":[{"name":"default-token-nhakq","secret":{"secretName":"default-token-nhakq"}}],"containers":[{"name":"bad-words","image":"docker.permissiondata.com/services/bad-words:master","ports":[{"containerPort":9053,"protocol":"TCP"}],"env":[{"name":"SPECIAL_LEVEL_KEY","valueFrom":{"configMapKeyRef":{"name":"special-config","key":"special.how"}}},{"name":"SPECIAL_TYPE_KEY","valueFrom":{"configMapKeyRef":{"name":"special-config","key":"special.type"}}}],"resources":{},"volumeMounts":[{"name":"default-token-nhakq","readOnly":true,"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount"}],"terminationMessagePath":"/dev/termination-log","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"default","serviceAccount":"default","nodeName":"minikubevm","securityContext":{},"imagePullSecrets":[{"name":"pddockerregistrykey"}]},"status":{"phase":"Pending","conditions":[{"type":"Initialized","status":"True","lastProbeTime":null,"lastTransitionTime":"2016-07-12T18:16:14Z"},{"type":"Ready","status":"False","lastProbeTime":null,"lastTransitionTime":"2016-07-12T18:16:14Z","reason":"ContainersNotReady","message":"containers
+      with unready status: [bad-words]"},{"type":"PodScheduled","status":"True","lastProbeTime":null,"lastTransitionTime":"2016-07-12T18:16:14Z"}],"hostIP":"10.0.2.15","podIP":"172.17.0.4","startTime":"2016-07-12T18:16:14Z","containerStatuses":[{"name":"bad-words","state":{"waiting":{"reason":"ImagePullBackOff","message":"Back-off
+      pulling image \"docker.permissiondata.com/services/bad-words:master\""}},"lastState":{},"ready":false,"restartCount":0,"image":"docker.permissiondata.com/services/bad-words:master","imageID":""}]}}'
+    kubernetes.io/created-by: |
+      {"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"default","name":"bad-words-4183345525","uid":"b7ecde55-485c-11e6-ab5d-7abdf6b0078d","apiVersion":"extensions","resourceVersion":"150"}}
+  creationTimestamp: 2016-07-14T21:14:18Z
+  generateName: bad-words-4183345525-
+  labels:
+    pod-template-hash: "4183345525"
+    run: bad-words
+  name: bad-words-4183345525-wkdi7
+  namespace: default
+  resourceVersion: "126"
+  selfLink: /api/v1/namespaces/default/pods/bad-words-4183345525-wkdi7
+  uid: ed44c1e4-4a07-11e6-9a71-6210569907a9
+spec:
+  containers:
+  - env:
+    - name: SPECIAL_LEVEL_KEY
+      valueFrom:
+        configMapKeyRef:
+          key: special.how
+          name: special-config
+    - name: SPECIAL_TYPE_KEY
+      valueFrom:
+        configMapKeyRef:
+          key: special.type
+          name: special-config
+    image: docker.permissiondata.com/services/bad-words:master
+    imagePullPolicy: IfNotPresent
+    name: bad-words
+    ports:
+    - containerPort: 9053
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-nhakq
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: pddockerregistrykey
+  nodeName: minikubevm
+  restartPolicy: Always
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - name: default-token-nhakq
+    secret:
+      secretName: default-token-nhakq
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2016-07-14T21:14:18Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2016-07-14T21:14:18Z
+    message: 'containers with unready status: [bad-words]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2016-07-14T21:16:31Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - image: docker.permissiondata.com/services/bad-words:master
+    imageID: ""
+    lastState: {}
+    name: bad-words
+    ready: false
+    restartCount: 0
+    state:
+      waiting:
+        reason: ContainerCreating
+  hostIP: 10.0.2.15
+  phase: Pending
+  startTime: 2016-07-14T21:14:18Z

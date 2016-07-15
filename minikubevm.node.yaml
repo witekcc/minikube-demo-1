@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: 2016-07-14T21:08:30Z
+  labels:
+    beta.kubernetes.io/arch: amd64
+    beta.kubernetes.io/os: linux
+    kubernetes.io/hostname: minikubevm
+  name: minikubevm
+  resourceVersion: "195"
+  selfLink: /api/v1/nodes/minikubevm
+  uid: 1d8a5d63-4a07-11e6-9a71-6210569907a9
+spec:
+  externalID: minikubevm
+status:
+  addresses:
+  - address: 10.0.2.15
+    type: LegacyHostIP
+  - address: 10.0.2.15
+    type: InternalIP
+  allocatable:
+    alpha.kubernetes.io/nvidia-gpu: "0"
+    cpu: "1"
+    memory: 1019780Ki
+    pods: "110"
+  capacity:
+    alpha.kubernetes.io/nvidia-gpu: "0"
+    cpu: "1"
+    memory: 1019780Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: 2016-07-14T21:28:51Z
+    lastTransitionTime: 2016-07-14T21:08:30Z
+    message: kubelet has sufficient disk space available
+    reason: KubeletHasSufficientDisk
+    status: "False"
+    type: OutOfDisk
+  - lastHeartbeatTime: 2016-07-14T21:28:51Z
+    lastTransitionTime: 2016-07-14T21:08:30Z
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: 2016-07-14T21:28:51Z
+    lastTransitionTime: 2016-07-14T21:08:30Z
+    message: kubelet is posting ready status
+    reason: KubeletReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  images:
+  - names:
+    - gcr.io/google-containers/kube-addon-manager-amd64:v2
+    sizeBytes: 231125583
+  - names:
+    - gcr.io/google_containers/kubernetes-dashboard-amd64:v1.1.0
+    sizeBytes: 58652270
+  - names:
+    - gcr.io/google_containers/pause-amd64:3.0
+    sizeBytes: 746888
+  nodeInfo:
+    architecture: amd64
+    bootID: 03f703ef-f4d9-405a-a09c-96e3838d0e54
+    containerRuntimeVersion: docker://1.11.1
+    kernelVersion: 4.4.14-boot2docker
+    kubeProxyVersion: v1.3.0
+    kubeletVersion: v1.3.0
+    machineID: ""
+    operatingSystem: linux
+    osImage: 'Boot2Docker 1.11.1 (TCL 7.1); master : 901340f - Fri Jul  1 22:52:19
+      UTC 2016'
+    systemUUID: 9440F84C-B4CB-44DA-BB16-84ABF446DA9F

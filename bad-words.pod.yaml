@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/created-by: |
+      {"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"default","name":"bad-words-4183345525","uid":"b7ecde55-485c-11e6-ab5d-7abdf6b0078d","apiVersion":"extensions","resourceVersion":"150"}}
+  creationTimestamp: 2016-07-12T18:16:14Z
+  generateName: bad-words-4183345525-
+  labels:
+    pod-template-hash: "4183345525"
+    run: bad-words
+  name: bad-words-4183345525-wkdi7
+  namespace: default
+  resourceVersion: "1015"
+  selfLink: /api/v1/namespaces/default/pods/bad-words-4183345525-wkdi7
+  uid: b7ed96ac-485c-11e6-ab5d-7abdf6b0078d
+spec:
+  containers:
+  - image: docker.permissiondata.com/services/bad-words:master
+    imagePullPolicy: IfNotPresent
+    name: bad-words
+    ports:
+    - containerPort: 9053
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-nhakq
+      readOnly: true
+    env:
+        - name: SPECIAL_LEVEL_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: special.how
+        - name: SPECIAL_TYPE_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: special.type
+  dnsPolicy: ClusterFirst
+  nodeName: minikubevm
+  restartPolicy: Always
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - name: default-token-nhakq
+    secret:
+      secretName: default-token-nhakq
+  imagePullSecrets:
+    - name: pddockerregistrykey
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2016-07-12T18:16:14Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2016-07-12T18:16:14Z
+    message: 'containers with unready status: [bad-words]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2016-07-12T18:16:14Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - image: docker.permissiondata.com/services/bad-words:master
+    imageID: ""
+    lastState: {}
+    name: bad-words
+    ready: false
+    restartCount: 0
+    state:
+      waiting:
+        message: Back-off pulling image "docker.permissiondata.com/services/bad-words:master"
+        reason: ImagePullBackOff
+  hostIP: 10.0.2.15
+  phase: Pending
+  podIP: 172.17.0.4
+  startTime: 2016-07-12T18:16:14Z
